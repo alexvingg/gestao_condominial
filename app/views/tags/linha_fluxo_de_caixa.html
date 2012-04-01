@@ -1,0 +1,23 @@
+<tr>
+	<td>${_id}</td>
+	<td>${_descricao}</td>
+	<td>${_data}</td>
+	<td>${_numero_cheque}</td>
+	<td>${_credito}</td>
+	#{if _up}
+		#{if _up == 'credito_sobe'}
+			<td><i class="icon-arrow-up"></i>${_credito}</td> 
+		#{/if}
+		#{if _up == 'credito_desce'}
+			<td><i class="icon-arrow-down"></i> ${_credito}</td>
+		#{/if}
+		
+		#{if _up == 'debito_sobe'}
+			<td><i class="icon-arrow-up"></i>${_debito}</td> 
+		#{/if}
+		#{if _up == 'debito_desce'}
+			<td><i class="icon-arrow-down"></i> ${_debito}</td>
+		#{/if}
+	#{/if}
+	<td>${_saldo}</td> 
+</tr>

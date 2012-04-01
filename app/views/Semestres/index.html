@@ -1,0 +1,108 @@
+#{extends 'layout_principal.html' /} 
+#{cabecalho_pagina titulo:'Cadastro de Semestres',descricao_lateral:'', descricao_inferior:'Aqui pode entrar uma descricao ou orientacao de
+utilizacao mais detalhada.Aqui pode entrar uma descricao ou orientacao
+de utilizacao mais detalhada.Aqui pode entrar uma descricao ou
+orientacao de utilizacao mais detalhada.Aqui pode entrar uma descricao
+ou orientacao de utilizacao mais detalhada.Aqui pode entrar uma
+descricao ou orientacao de utilizacao mais detalhada.Aqui pode entrar
+uma descricao ou orientacao de utilizacao mais detalhada.Aqui pode
+entrar uma descricao ou orientacao de utilizacao mais detalhada.Aqui
+pode entrar uma descricao ou orientacao de utilizacao mais
+detalhada.Aqui pode entrar uma descricao ou orientacao de utilizacao
+mais detalhada.Aqui pode entrar uma descricao ou orientacao de
+utilizacao mais detalhada.Aqui pode entrar uma descricao ou orientacao
+de utilizacao mais detalhada.'/}
+
+<script type="text/javascript">
+$(function(){
+
+	// Accordion
+	$("#accordion").accordion({ header: "h3" });
+	
+});
+</script>
+
+
+<div class="container">
+
+	<div class="span3">
+		<!-- Accordion -->
+		<h2 class="demoHeaders">Accordion</h2>
+		<div id="accordion">
+			<div>
+				<h3>
+					<a href="#">First</a>
+				</h3>
+				<div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+					Lorem ipsum dolor sit amet.</div>
+			</div>
+			<div>
+				<h3>
+					<a href="#">Second</a>
+				</h3>
+				<div>Phasellus mattis tincidunt nibh.</div>
+			</div>
+			<div>
+				<h3>
+					<a href="#">Third</a>
+				</h3>
+				<div>Nam dui erat, auctor a, dignissim quis.</div>
+			</div>
+		</div>
+	</div>
+	<div class="span10">
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<td colspan="2"><strong>Conta Corrente:</strong> Banco do
+						Brasil, C/C: 3645-9</td>
+				</tr>
+				<tr>
+					<td><strong>Período:</strong> 01/01/2011 a 03/03/2011</td>
+					<td><strong>Saldo Inicial:</strong> R$ 51.435,00</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Descrição</th>
+					<th>Data</th>
+					<th>Nº Cheque</th>
+					<th>Crédito</th>
+					<th>Débito</th>
+					<th>Saldo</th>
+				</tr>
+			</thead>
+			<tbody>
+				#{linha_fluxo_de_caixa id:'1', descricao:'Testando a tag', data:'22/01/2010', numero_cheque:'1234432', up:'credito_sobe', credito:'R$ 2.500,00', debito:'-', saldo:'R$ 2.500,00'/}
+				
+				<tr>
+					<td>2</td>
+					<td><a data-toggle="modal" id="modal" href="#myModal"
+						onclick="pegarValorPorJquery()">Desp�sito de morador</a></td>
+					<td>24/11/2011</td>
+					<td>-</td>
+					<td><i class="icon-arrow-down"></i>R$ 2.500,00</td>
+					<td>-</td>
+					<td>R$ 10.000,00</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">Total:</td>
+					<td>R$ 5.500,00</td>
+					<td>R$ 8.700,00</td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td colspan="6">Saldo Total:</td>
+					<td>R$ 8.700,00</td>
+				</tr>
+			</tfoot>
+
+		</table>
+	</div>
+</div>
