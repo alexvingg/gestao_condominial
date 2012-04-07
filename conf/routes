@@ -16,6 +16,7 @@ GET     /public/                                staticDir:public
 
 #Condominio
 GET 	/condominios							Condominios.index
+GET 	/funcionarios							Funcionarios.index
 
 #Checklists
 GET		/checklists								Checklists.index	
