@@ -1,25 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 #{extends 'layout_principal.html' /} 
-#{cabecalho_pagina titulo:'Cadastro de Funcion�rios',descricao:'Cadastro de funcion�rios'/}
+#{cabecalho_pagina titulo:'Cadastro de Funcionários',descricao:'Cadastro de funcionários'/}
 
-
-
-<!-- 
-	<div class="row show-grid">
-	<div class="span2">
-		<div class="btn-group">
-			<button class="btn dropdown-toggle" data-toggle="dropdown">
-				Operacoes<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="#"><i class="icon-plus"></i> Incluir</a></li>
-				<li><a href="#"><i class="icon-edit"></i> Alterar</a></li>
-				<li><a href="#"><i class="icon-minus"></i>Desativar</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
- -->
- 
  #{menu_operacoes 
  	opIncluir:'true', acaoIncluir:'/funcionarios/form/', 
  	opAlterar:'true', acaoAlterar:'/funcionarios/form',
@@ -27,45 +9,28 @@
  /}
 
 <br />
-
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>Descrição</th>
-			<th>Data</th>
-			<th>Nº Cheque</th>
-			<th>Crédito</th>
-			<th>Débito</th>
-			<th>Saldo</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>2</td>
-			<td><a data-toggle="modal" id="modal" href="#myModal"
-				onclick="pegarValorPorJquery()">Desp�sito de morador</a></td>
-			<td>24/11/2011</td>
-			<td>-</td>
-			<td><i class="icon-arrow-down"></i>R$ 2.500,00</td>
-			<td>-</td>
-			<td>R$ 10.000,00</td>
-		</tr>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="4">Total:</td>
-			<td>R$ 5.500,00</td>
-			<td>R$ 8.700,00</td>
-			<td></td>
-		</tr>
-
-		<tr>
-			<td colspan="6">Saldo Total:</td>
-			<td>R$ 8.700,00</td>
-		</tr>
-	</tfoot>
-
-</table>
+<form action="#" method="POST">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>ID</th>
+				<th>CPF</th>
+				<th>NOME</th>
+			</tr>
+		</thead>
+		<tbody>
+			#{list listaFuncionarios, as:'lf'}
+				<tr>
+					<td>#{checkbox name:'funcionario' ,value:lf?.id/}</td>
+					<td>${lf?.id}</td>
+					<td>${lf?.cpfFormatado}</td>
+					<td>${lf?.nome}</td>
+				</tr>
+			#{/list}
+		</tbody>
+	
+	</table>
+</form>
 
 
