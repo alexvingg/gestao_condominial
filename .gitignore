@@ -5,5 +5,5 @@
 /logs
 .classpath
 /documentacao
-.class
 *.class
+*.DS_Store
