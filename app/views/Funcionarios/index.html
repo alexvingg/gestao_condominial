@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 #{extends 'layout_principal.html' /} 
-#{cabecalho_pagina titulo:'Cadastro de Funcionários',descricao:'Cadastro de funcionários'/}
+#{cabecalho_pagina titulo:'Cadastro de Funcionários', descricao_lateral:'Cadastro de funcionários'/}
 
  #{menu_operacoes 
  	opIncluir:'true', acaoIncluir:'/funcionarios/form/', 
@@ -9,12 +9,13 @@
  /}
 
 <br />
+
 <form action="#" method="POST">
 	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Teste</th>
+				<th>Edição</th>
 				<th>ID</th>
 				<th>CPF</th>
 				<th>NOME</th>
