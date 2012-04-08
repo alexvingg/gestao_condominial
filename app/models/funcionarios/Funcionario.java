@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 
 import play.db.jpa.Model;
+import util.conversores.StringUtil;
 import util.conversores.UtilidadesConversao;
 
 @Entity(name="tb_funcionarios")
@@ -29,6 +30,10 @@ public class Funcionario extends Model{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getCodigoFuncionario(){
+		return StringUtil.padLeft(String.valueOf(this.id), 10, '0');
 	}
 	
 	
