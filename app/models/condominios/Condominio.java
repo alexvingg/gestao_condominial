@@ -1,4 +1,4 @@
-package models;
+package models.condominios;
 
 import play.db.jpa.Model;
 
