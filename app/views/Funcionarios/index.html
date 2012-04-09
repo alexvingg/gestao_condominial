@@ -6,6 +6,9 @@
 
 <script>
 	$(document).ready(function() {
+			
+		
+		$('#myModal').show('false');
 		
 		//incui a configuracao de close dos alerts
 		$(".alert").alert()
@@ -29,16 +32,16 @@
 
       	//Controla o botao de exibir/ocultar os filtros de coluna
         $("#ocultar").click(function () {
-            $("thead tr:last").fadeToggle(200);
+            $("thead tr:last").fadeToggle(200);            
+        });        
+
+        $("#linkModalIncluir").click(function(){
+        	$('#modalIncluir').modal('show');
         });
-
-        
 	});
-
-
 </script>
  #{menu_operacoes 
- 	opIncluir:'true', acaoIncluir:'/funcionarios/', 
+ 	opIncluir:'true', acaoIncluir:'#', 
  	opAlterar:'true', acaoAlterar:'/funcionarios/simular',
  	opDesativar:'true', acaoDesativar:'/funcionarios/form'
  /}
@@ -77,13 +80,33 @@
 	</table>
 	<table align="center">
 		<tr>
-			<td>#{paginate.controls items:paginator /} </td>
+			<td> </td>
 		</tr>
 	</table>
 </form>
 <br/>
 
-
-
-
-
+<!-- INICIO DE MODAL DE INCLUIR FUNCIONARIO -->
+<div class="modal hide fade" id="modalIncluir" style="display: none;">
+	<div class="modal-header">
+		<a data-dismiss="modal" class="close">×</a>
+		<h3>Incluir Funcionário</h3>
+	</div>
+	<div class="modal-body">
+		<div class="control-group">
+			<label for="cpf" class="control-label">CPF</label>
+			<div class="controls">
+				<input type="text" id="cpf" placeholder="Ex.: 1237347449988" class="input-medium focused">
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="select_cargos" class="control-label">Cargo</label>
+			<div class="controls">
+				#{select 'cargos', items:cargos, valueProperty:'id', labelProperty:'descricao', value:'User-5', id:'select_cargos' /}
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a data-dismiss="modal" class="btn" href="#">Close</a> <a
+				class="btn btn-primary" href="#">Save changes</a>
+		</div>
+	</div>
