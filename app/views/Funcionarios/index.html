@@ -1,34 +1,51 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script>
+	$(document).ready(function() { 
+        $("#tabela").tablesorter();
+
+        $("#tabela").tableFilter({ 
+            ignoreCase: true
+        }); 
+	});
+</script>
+
 #{extends 'layout_principal.html' /} 
 #{cabecalho_pagina titulo:'Cadastro de Funcionários', descricao_lateral:'Cadastro de funcionários'/}
 
  #{menu_operacoes 
- 	opIncluir:'true', acaoIncluir:'/funcionarios/form/', 
- 	opAlterar:'true', acaoAlterar:'/funcionarios/form',
- 	opDesativar:'true', acaoDesativar:'/funcionarios/form'
+ 	opIncluir:'true', acaoIncluir:'/funcionarios/', 
+ 	opAlterar:'true', acaoAlterar:'/funcionarios/simular',
+ 	opDesativar:'false', acaoDesativar:'/funcionarios/form'
  /}
 
 <br />
 
 <form action="#" method="POST">
-	<table class="table table-bordered">
+	<table id="tabela" class="table table-bordered">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Edição</th>
 				<th>ID</th>
 				<th>CPF</th>
-				<th>NOME</th>
+				<th>Nome</th>
+				<th>Cargo</th>
+				<th>Carga Horária</th>
+				<th>Tel. Fixo</th>
+				<th>Tel. Celular</th>
 			</tr>
 		</thead>
 		<tbody>
 			#{list listaFuncionarios, as:'lf'}
 				<tr>
-					<td>#{checkbox name:'funcionario' ,value:lf?.id/}</td>
-					<td>#{botoes_edicao_grid /}</td>
+					<td>#{checkbox name:'funcionario' , value:lf?.id/}</td>
 					<td>${lf?.codigoFuncionario}</td>
 					<td>${lf?.cpfFormatado}</td>
 					<td>${lf?.nome}</td>
+					<td>${lf?.cargo?.descricao}</td>
+					<td>${lf?.carga_horaria}</td>
+					<td>${lf?.telefone_fixo}</td>
+					<td>${lf?.telefone_celular}</td>
 				</tr>
 			#{/list}
 		</tbody>
