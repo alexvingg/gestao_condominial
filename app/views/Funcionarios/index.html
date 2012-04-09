@@ -7,20 +7,32 @@
 <script>
 	$(document).ready(function() {
 		
+		//incui a configuracao de close dos alerts
 		$(".alert").alert()
 		
+		//inclui o ordenador 
         $("#tabela")
         	.tablesorter()
         	.tablesorterPager({container: $("#pager")
        	});
         
-
+		//inclui o filtro por coluna
         $("#tabela").tableFilter({ 
             ignoreCase: true,
             inputClasses: "input-small",
             emptyMessage: "<div class='alert alert-error'>Não foram encontrados registros para o critério de pesquisa.</div>",
             columns: [1,2,3,4,5,6,7]
         });
+
+      	//a linha de filtros fica oculta quando carrega a página
+        $("thead tr:last").hide();
+
+      	//Controla o botao de exibir/ocultar os filtros de coluna
+        $("#ocultar").click(function () {
+            $("thead tr:last").fadeToggle(200);
+        });
+
+        
 	});
 
 
@@ -32,7 +44,7 @@
  /}
 
 <br />
-#{paginate.summary items:listaFuncionarios /}
+
 <form action="#" method="POST">
 	<table id="tabela" class="table table-bordered">
 		<thead>
