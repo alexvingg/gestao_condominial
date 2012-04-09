@@ -14,4 +14,5 @@ GET     /                                       Application.index
 
 GET 	/condominios							Condominios.index
 GET 	/funcionarios							Funcionarios.index
-GET		/checklists								Checklists.index	
+GET		/checklists								Checklists.index
+	
