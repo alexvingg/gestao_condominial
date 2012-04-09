@@ -1,27 +1,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script>
-	$(document).ready(function() { 
-        $("#tabela").tablesorter();
-
-        $("#tabela").tableFilter({ 
-            ignoreCase: true,
-            inputClasses: "input-small"
-        }); 
-	});
-</script>
-
 #{extends 'layout_principal.html' /} 
 #{cabecalho_pagina titulo:'Cadastro de Funcionários', descricao_lateral:'Cadastro de funcionários'/}
 
+
+<script>
+	$(document).ready(function() {
+		
+		$(".alert").alert()
+		
+        $("#tabela")
+        	.tablesorter()
+        	.tablesorterPager({container: $("#pager")
+       	});
+        
+
+        $("#tabela").tableFilter({ 
+            ignoreCase: true,
+            inputClasses: "input-small",
+            emptyMessage: "<div class='alert alert-error'>Não foram encontrados registros para o critério de pesquisa.</div>",
+            columns: [1,2,3,4,5,6,7]
+        });
+	});
+
+
+</script>
  #{menu_operacoes 
  	opIncluir:'true', acaoIncluir:'/funcionarios/', 
  	opAlterar:'true', acaoAlterar:'/funcionarios/simular',
- 	opDesativar:'false', acaoDesativar:'/funcionarios/form'
+ 	opDesativar:'true', acaoDesativar:'/funcionarios/form'
  /}
 
 <br />
-
 <form action="#" method="POST">
 	<table id="tabela" class="table table-bordered">
 		<thead>
@@ -50,8 +60,18 @@
 				</tr>
 			#{/list}
 		</tbody>
-	
+	</table>
+
+	<table align="center">
+		<tbody>
+			<tr>
+				<td>#{paginacao/}</td>
+			</tr>
+		</tbody>
 	</table>
 </form>
+<br/>
+
+
 
 
