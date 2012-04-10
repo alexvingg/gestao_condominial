@@ -35,58 +35,56 @@
             $("thead tr:last").fadeToggle(200);            
         });        
 
-        $("#linkModalIncluir").click(function(){
-        	$('#modalIncluir').modal('show');
-        });
+        //$("#linkModalIncluir").click(function(){
+        //	$('#modalIncluir').modal('show');
+        //});
 	});
 </script>
  #{menu_operacoes 
- 	opIncluir:'true', acaoIncluir:'#', 
+ 	opIncluir:'true', controller:'funcionarios', 
  	opAlterar:'true', acaoAlterar:'/funcionarios/simular',
  	opDesativar:'true', acaoDesativar:'/funcionarios/form'
  /}
+<br />
+
+<table id="tabela" class="table table-bordered">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>ID</th>
+			<th>CPF</th>
+			<th>Nome</th>
+			<th>Cargo</th>
+			<th>Carga Horária</th>
+			<th>Tel. Fixo</th>
+			<th>Tel. Celular</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{paginate.list items:paginator, as:'lf'}
+		<tr>
+			<td>#{checkbox name:'funcionario' , value:lf?.id/}</td>
+			<td><a href="@{Funcionarios.form(lf?.id)}">${lf?.codigoFuncionario}</a></td>
+			<td>${lf?.cpfFormatado}</td>
+			<td>${lf?.nome}</td>
+			<td>${lf?.cargo?.descricao}</td>
+			<td>${lf?.carga_horaria}</td>
+			<td>${lf?.telefone_fixo}</td>
+			<td>${lf?.telefone_celular}</td>
+		</tr>
+		#{/paginate.list}
+
+	</tbody>
+</table>
+<table align="center">
+	<tr>
+		<td>#{paginate.controls items:paginator /}</td>
+	</tr>
+</table>
 
 <br />
 
-<form action="#" method="POST">
-	<table id="tabela" class="table table-bordered">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>ID</th>
-				<th>CPF</th>
-				<th>Nome</th>
-				<th>Cargo</th>
-				<th>Carga Horária</th>
-				<th>Tel. Fixo</th>
-				<th>Tel. Celular</th>
-			</tr>
-		</thead>
-		<tbody>
-			#{paginate.list items:paginator, as:'lf'}
-				<tr>
-					<td>#{checkbox name:'funcionario' , value:lf?.id/}</td>
-					<td>${lf?.codigoFuncionario}</td>
-					<td>${lf?.cpfFormatado}</td>
-					<td>${lf?.nome}</td>
-					<td>${lf?.cargo?.descricao}</td>
-					<td>${lf?.carga_horaria}</td>
-					<td>${lf?.telefone_fixo}</td>
-					<td>${lf?.telefone_celular}</td>
-				</tr>
-			#{/paginate.list}
-			
-		</tbody>
-	</table>
-	<table align="center">
-		<tr>
-			<td>#{paginate.controls items:paginator /} </td>
-		</tr>
-	</table>
-</form>
-<br/>
-
-<!-- INICIO DE MODAL DE INCLUIR FUNCIONARIO -->
+<!-- INICIO DE MODAL DE INCLUIR FUNCIONARIO 
 <div class="modal hide fade" id="modalIncluir" style="display: none;">
 	<div class="modal-header">
 		<a data-dismiss="modal" class="close">×</a>
@@ -110,3 +108,5 @@
 				class="btn btn-primary" href="#">Save changes</a>
 		</div>
 	</div>
+	
+-->

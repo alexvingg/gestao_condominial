@@ -1,0 +1,34 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+#{extends 'layout_principal.html' /} 
+#{cabecalho_pagina titulo:'Cadastro de Funcionários', descricao_lateral:'Formulário de edição'/}
+
+<form action="@{Funcionarios.save(funcionario?.id)}" method="POST">
+	<fieldset>		
+		<div class="control-group">
+			<label for="cpf" class="control-label">CPF</label>
+			<div class="controls">
+				#{field 'funcionarioVO.cpf'}
+					<input type="text" name="${field.name}" value="${funcionario?.cpf}" placeholder="Ex.: 1237347449988" class="input-medium focused">
+				#{/field}
+				<span class="help-inline">Não usar ponto ou traço.</span>
+			</div>
+			<span class="error">${field.error}</span>
+		</div>		
+		
+		<div class="control-group">
+			<label for="select_cargos" class="control-label">Cargo</label>
+			<div class="controls">				
+				#{field 'funcionarioVO.cargo.id'}
+					<div class="input">
+						<select name="${field.name}"> 
+							#{list cargos, as:'c'}
+								<option value="${c.id}" ${funcionario?.cargo?.id==c.id?'selected' : ''}>${c.descricao}</option>
+							#{/list}
+						</select>
+					</div>
+				#{/field}
+			</div>
+		</div>
+		#{botoes_formulario/}		
+	</fieldset>
+</form>

@@ -22,4 +22,48 @@ public class Funcionarios extends Controller{
 		List<Cargo> cargos = Cargo.findAll();
 	    render(paginator, cargos);
 	}
+	
+	public static void form(Long id) {
+		if (id != null) {
+			Funcionario funcionario = Funcionario.findById(id);
+			List<Cargo> cargos = Cargo.findAll();
+			render(funcionario, cargos);
+		} else {
+			render();
+		}
+	}
+
+	public static void save(Long id, Funcionario funcionarioVO) {
+
+		Funcionario funcionario;
+
+		if (id == null) {
+			funcionario = funcionarioVO;
+			funcionarioVO = null;
+		} else {
+			funcionario = Funcionario.findById(id);
+			if (funcionario != null) {
+				//status.status = funcionarioVO.status;
+				//status.gravidade = funcionarioVO.gravidade;
+			} else {
+				flash.error("Registro não encontrado!");
+				index();
+			}
+		}
+
+		funcionario.save();
+		flash.success("O registro cadastrado com sucesso!");
+		index();
+	}
+
+	public static void delete(Long id) {
+		if (id != null) {
+			Funcionario funcionario = Funcionario.findById(id);
+			String tempValue = funcionario.getCodigoFuncionario();
+			funcionario.delete();
+			flash.success("O registro " + tempValue + " apagado com sucesso!");
+			tempValue = null;
+			index();
+		}
+	}
 }
