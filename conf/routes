@@ -12,7 +12,9 @@ GET     /public/                                staticDir:public
 # Home page
 GET     /                                       Application.index
 
-GET 	/condominios							Condominios.index
-GET 	/funcionarios							Funcionarios.index
-GET		/checklists								Checklists.index
+GET     /{controller}                           {controller}.index 
+GET     /{controller}/view/{id}                 {controller}.view 
+GET     /{controller}/form/{id}                 {controller}.form 
+GET     /{controller}/delete/{id}               {controller}.delete 
+POST    /{controller}/save/{id}                 {controller}.save
 	
