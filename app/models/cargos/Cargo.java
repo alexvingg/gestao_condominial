@@ -4,18 +4,9 @@ import javax.persistence.Entity;
 
 import play.db.jpa.Model;
 
-@Entity(name="tb_cargos")
-public class Cargo extends Model{
-	
-	private String descricao;
+@Entity(name = "tb_cargos")
+public class Cargo extends Model {
 
-	public String getDescricao() {
-		return descricao;
-	}
+	public String descricao;
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	
-	
 }
