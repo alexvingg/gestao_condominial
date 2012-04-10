@@ -14,7 +14,8 @@ GET     /                                       Application.index
 
 GET     /{controller}                           {controller}.index 
 GET     /{controller}/view/{id}                 {controller}.view 
-GET     /{controller}/form/{id}                 {controller}.form 
+GET     /{controller}/form/{id}                 {controller}.form
+GET     /{controller}/form		                {controller}.form 
 GET     /{controller}/delete/{id}               {controller}.delete 
 POST    /{controller}/save/{id}                 {controller}.save
 	
