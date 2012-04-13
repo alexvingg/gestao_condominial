@@ -46,7 +46,9 @@
 			if(num > 1){
 				alert( "Não é possível alterar mais de um registro de uma só vez.");
 			}else{
-				alert("Passa de boa");
+				alert($("input:checked").val());
+				
+				$("#acaoAlterar").attr("href", "/funcionarios/form/"+$("input:checked").val());
 			}
 		} 
 	}
