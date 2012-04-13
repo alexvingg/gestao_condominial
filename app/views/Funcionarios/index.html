@@ -35,19 +35,28 @@
             $("thead tr:last").fadeToggle(200);            
         });        
 
-        //$("#linkModalIncluir").click(function(){
-        //	$('#modalIncluir').modal('show');
-        //});
 	});
+
+	//funcao que valida os checkbox da grid
+	function funcaoAlterar(){
+		var num = $("input:checked").length;
+		if(num == 0 || num == null){
+			alert( "Você precisa selecionar pelo menos um registro para alterar");
+		}else{
+			if(num > 1){
+				alert( "Não é possível alterar mais de um registro de uma só vez.");
+			}else{
+				alert("Passa de boa");
+			}
+		} 
+	}
 </script>
- #{menu_operacoes 
- 	opIncluir:'true', controller:'funcionarios', 
- 	opAlterar:'true', acaoAlterar:'/funcionarios/simular',
- 	opDesativar:'true', acaoDesativar:'/funcionarios/form'
- /}
+ #{menu_operacoes opIncluir:'true', acaoIncluir:@Funcionarios.form(1),
+ 				opAlterar:'true' /}
 <br />
 
-<table id="tabela" class="table table-bordered">
+<form action="#" method="post">
+	<table id="tabela" class="table table-bordered">
 	<thead>
 		<tr>
 			<th>#</th>
@@ -60,8 +69,10 @@
 			<th>Tel. Celular</th>
 		</tr>
 	</thead>
+	
 	<tbody>
 		#{paginate.list items:paginator, as:'lf'}
+		
 		<tr>
 			<td>#{checkbox name:'funcionario' , value:lf?.id/}</td>
 			<td><a href="@{Funcionarios.form(lf?.id)}">${lf?.codigoFuncionario}</a></td>
@@ -76,6 +87,7 @@
 
 	</tbody>
 </table>
+</form>
 <table align="center">
 	<tr>
 		<td>#{paginate.controls items:paginator /}</td>

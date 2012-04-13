@@ -9,11 +9,11 @@
 			</button>
 			<ul class="dropdown-menu">
 				#{if _opIncluir == 'true'}
-					<li><a href="/${_controller}/form/1"><i class="icon-plus"></i> Incluir</a></li> 
+					<li ><a href="${_acaoIncluir}" onclick="funcaoIncluir();"><i class="icon-plus"></i> Incluir</a></li> 
 				#{/if}
 				
 				#{if _opAlterar == 'true'}
-					<li><a href="${_acaoAlterar}"><i class="icon-edit"></i> Alterar</a></li> 
+					<li><a href="${_acaoAlterar}" onclick="funcaoAlterar();"><i class="icon-edit"></i> Alterar</a></li> 
 				#{/if}
 				
 				#{if _opDesativar == 'true'}
