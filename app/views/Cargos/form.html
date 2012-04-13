@@ -1,0 +1,18 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+#{extends 'layout_principal.html' /} 
+#{cabecalho_pagina titulo:'Cadastro de Funcionários', descricao_lateral:'Formulário de edição'/}
+
+<form action="@{Cargos.save(cargo?.id) }" method="POST">
+	<fieldset>		
+		<div class="control-group">
+			<label for="descricao" class="control-label">Descrição</label>
+			<div class="controls">
+				#{field 'cargoVO.descricao'}
+					<input type="text" name="${field.name}" value="${cargo?.descricao}" placeholder="Ex.: Porteiro" class="input-medium focused">
+				#{/field}
+			</div>
+			<span class="error">${field.error}</span>
+		</div>		
+		#{botoes_formulario/}		
+	</fieldset>
+</form>

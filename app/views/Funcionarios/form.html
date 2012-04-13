@@ -2,7 +2,7 @@
 #{extends 'layout_principal.html' /} 
 #{cabecalho_pagina titulo:'Cadastro de Funcionários', descricao_lateral:'Formulário de edição'/}
 
-<form action="@{Funcionarios.save(funcionario?.id)}" method="POST">
+<form action="@{Funcionarios.save(funcionario?.id) }" method="POST">
 	<fieldset>		
 		<div class="control-group">
 			<label for="cpf" class="control-label">CPF</label>

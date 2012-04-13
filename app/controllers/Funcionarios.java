@@ -24,9 +24,9 @@ public class Funcionarios extends Controller{
 	}
 	
 	public static void form(Long id) {
+		List<Cargo> cargos = Cargo.findAll();
 		if (id != null) {
 			Funcionario funcionario = Funcionario.findById(id);
-			List<Cargo> cargos = Cargo.findAll();
 			render(funcionario, cargos);
 		} else {
 			render();

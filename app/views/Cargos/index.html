@@ -1,0 +1,89 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+#{extends 'layout_principal.html' /} 
+#{cabecalho_pagina titulo:'Cadastro de Funcionários', descricao_lateral:'Cadastro de funcionários'/}
+
+
+<script>
+	$(document).ready(function() {
+			
+		
+		$('#myModal').show('false');
+		
+		//incui a configuracao de close dos alerts
+		$(".alert").alert()
+		
+		//inclui o ordenador 
+        $("#tabela")
+        	.tablesorter()
+        	.tablesorterPager({container: $("#pager")
+       	});
+        
+		//inclui o filtro por coluna
+        $("#tabela").tableFilter({ 
+            ignoreCase: true,
+            inputClasses: "input-small",
+            emptyMessage: "<div class='alert alert-error'>Não foram encontrados registros para o critério de pesquisa.</div>",
+            columns: [1,2,3,4,5,6,7]
+        });
+
+      	//a linha de filtros fica oculta quando carrega a página
+        $("thead tr:last").hide();
+
+      	//Controla o botao de exibir/ocultar os filtros de coluna
+        $("#ocultar").click(function () {
+            $("thead tr:last").fadeToggle(200);            
+        });        
+
+	});
+
+	//funcao que valida os checkbox da grid
+	function funcaoAlterar(){
+		var num = $("input:checked").length;
+		if(num == 0 || num == null){
+			alert( "Você precisa selecionar pelo menos um registro para alterar");
+		}else{
+			if(num > 1){
+				alert( "Não é possível alterar mais de um registro de uma só vez.");
+			}else{
+				alert($("input:checked").val());
+				
+				$("#acaoAlterar").attr("href", "/cargos/form/"+$("input:checked").val());
+			}
+		} 
+	}
+</script>
+ #{menu_operacoes opIncluir:'true', acaoIncluir:@Cargos.form(),
+ 				opAlterar:'true' /}
+<br />
+
+<form action="#" method="post">
+	<table id="tabela" class="table table-bordered">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>ID</th>
+			<th>Nome</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		#{paginate.list items:cargosPaginado, as:'cargo'}
+		
+		<tr>
+			<td>#{checkbox name:'cargo' , value:cargo?.id/}</td>
+			<td><a href="@{Cargos.form(lf?.id)}">${cargo?.id}</a></td>
+			<td>${cargo?.descricao}</td>
+		</tr>
+		#{/paginate.list}
+
+	</tbody>
+</table>
+</form>
+<table align="center">
+	<tr>
+		<td>#{paginate.controls items:cargosPaginado /}</td>
+	</tr>
+</table>
+
+<br />
