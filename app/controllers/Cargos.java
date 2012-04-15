@@ -1,6 +1,8 @@
 package controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import business.cargo.CargoBO;
 
@@ -21,6 +23,9 @@ public class Cargos extends Controller{
 	}
 	
 	public static void form(Long id) {
+	    Map reportParams = new HashMap();
+	    //jrxml and jasper files should be in app/reports
+	    //renderBinary(lib.reports.BaseJasperReport.generateReport("SomeReport", reportParams), "some_report.pdf");
 		if (id != null) {
 			Cargo cargo= Cargo.findById(id);
 			render(cargo);
@@ -49,14 +54,29 @@ public class Cargos extends Controller{
 		 if(validation.hasErrors()) {
 			 String erros = "";
 	         for(play.data.validation.Error error : validation.errors()) {
-	             erros += error.message() + "<br/>";
+	             erros += error.message() + " ";
 	         }
 			 flash.error(erros);
 			 System.out.println(erros);
+			 render("@form");
 		 }
 		
-		//cargo.save();
-		//flash.success("O registro cadastrado com sucesso!");
-		//index();
+		cargo.save();
+		flash.success("O registro cadastrado com sucesso!");
+		index();
+	}
+	
+	public static void delete(Long id){
+		if(id != null){
+			try{
+				Cargo c = Cargo.findById(id);
+				c.delete();
+				flash.success("O registro desativado com sucesso!");
+				index();
+			}catch (Exception e) {
+				flash.error("O registro não foi desativado");
+				index();
+			}
+		}
 	}
 }

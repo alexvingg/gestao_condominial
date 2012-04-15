@@ -10,7 +10,7 @@ public class CargoBO {
 	
 	public static Validation validaCampos(Cargo cargo){
 		validation = validation.current();
-		validation.maxSize(cargo,10);
+		validation.required(cargo.descricao).message("O campo descrição é necessário !");
 		return validation;
 	}
 }

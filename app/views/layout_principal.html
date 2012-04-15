@@ -87,6 +87,33 @@
 	<!-- Topbar  ================================================== -->
 
 	<div class="container">
+	            #{if flash.success}
+
+            <script>
+                window.onload = function(){
+                    setInterval("document.getElementById('msginfo').style.display='none'", 5000);
+                }
+            </script>
+
+            <div id="msginfo" class="ui-widget">
+                #{box_success message:flash.success/}
+            </div>
+
+            #{/if}
+
+            #{if flash.error || error}
+
+            <script>
+                window.onload = function(){
+                    setInterval("document.getElementById('msginfo').style.display='none'", 5000);
+                }
+            </script>
+
+            <div id="msginfo" class="ui-widget">
+                #{box_error label:'Alerta:', message:error ?: flash.error/}
+            </div>
+            #{/if}
+            
 		<div class="content">#{doLayout /}</div>		
 		<hr>
 		<footer class="footer">

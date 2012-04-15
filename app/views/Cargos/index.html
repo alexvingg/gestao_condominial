@@ -52,9 +52,25 @@
 			}
 		} 
 	}
+	
+	//funcao que valida os checkbox da grid
+	function funcaoDesativar(){
+		var num = $("input:checked").length;
+		if(num == 0 || num == null){
+			alert( "Você precisa selecionar pelo menos um registro para alterar");
+		}else{
+			if(num > 1){
+				alert( "Não é possível alterar mais de um registro de uma só vez.");
+			}else{
+				alert($("input:checked").val());
+				
+				$("#acaoDesativar").attr("href", "/cargos/delete/"+$("input:checked").val());
+			}
+		} 
+	}
 </script>
  #{menu_operacoes opIncluir:'true', acaoIncluir:@Cargos.form(),
- 				opAlterar:'true' /}
+ 				opAlterar:'true', opDesativar:'true', acaoDesativar:'#' /}
 <br />
 
 <form action="#" method="post">
