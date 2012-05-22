@@ -13,4 +13,5 @@ public class CargoBO {
 		validation.required(cargo.descricao).message("O campo descrição é necessário !");
 		return validation;
 	}
+	
 }
